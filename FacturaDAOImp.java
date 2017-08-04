@@ -613,12 +613,18 @@ public class FacturaDAOImp implements FacturaDAO {
             rs = ps.executeQuery();
 
             if (rs.next()) {
+                
+                if(numDocumento.length()==6){
+                    
+                    int num=(int) numDocumento.subString(1,5);
+
                 numDocumento = String.valueOf(rs.getInt(1));
                 cesDocumento = rs.getString(2);
                 for (int i = 1; numDocumento.length() <= 4; i++) {
                     numDocumento = "0" + numDocumento;
                 }
                 numDocumento = cesDocumento + numDocumento;
+              }
             }
 //            Service.cerrarConexion();
         } catch (Exception e) {
